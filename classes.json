@@ -1,0 +1,24 @@
+{
+    "tablename": "Classes",
+    "columns": [
+        "name VARCHAR(255)",
+        "specialty VARCHAR(255)",
+        "health INT"
+    ],
+    "data": [{
+            "name": "Rock",
+            "specialty": "heavy",
+            "health": 10
+        },
+        {
+            "name": "Paper",
+            "specialty": "agility",
+            "health": 2
+        },
+        {
+            "name": "Scissors",
+            "specialty": "melee",
+            "health": 5
+        }
+    ]
+}

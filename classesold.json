@@ -1,0 +1,23 @@
+[
+    {
+        "className": [
+            "Rock",
+            "Paper",
+            "Scissors"
+        ]
+    },
+    {
+        "specialty": [
+            "heavy",
+            "agility",
+            "melee"
+        ]
+    },
+    {
+        "health": [
+            10,
+            2,
+            5
+        ]
+    }
+]
