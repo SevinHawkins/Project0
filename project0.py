@@ -16,9 +16,8 @@ class Connect:
             return [connection, cursor]
 
         
-        except sql.Error as e:
+        except Exception as e:
             print(e)
-
 
 
 
@@ -30,15 +29,34 @@ class Queries:
         self.conn = connection
 
     def setup(self):
-        schema = json.load(open('classes.json', 'r'))
-        tablename = schema['tablename']
-        executestring = f"CREATE TABLE {tablename} ("
-        for column in schema['columns']:
-            executestring += column + ", "
-        # strip the trailing comma and space from the generated string
-        executestring = executestring[:-2] + ");"
-        self.curs.execute(executestring)
-
+        jsonconfig = json.load(open('classes.json', 'r'))
+        for schema in jsonconfig['schemas']:
+            tablename = schema['tablename']
+            checkstmt = f"SHOW TABLES LIKE '{tablename}'"
+            self.curs.execute(checkstmt)
+            result = self.curs.fetchone()
+            if result:
+                continue
+            executestring = f"CREATE TABLE {tablename} ("
+            insertstring = f"INSERT INTO TABLE {tablename} ("
+            for column in schema['columns']:
+                executestring += f"{column[0]} {column[1]}, "
+                insertstring += f"{column[0]}, "
+            # strip the trailing comma and space from the generated string
+            if schema['primarykey'] is not None:
+                executestring = executestring + f"PRIMARY KEY ({schema['primarykey']}));"
+            else: 
+                executestring = executestring[:-2] + ");"
+            insertstring = insertstring[:-2] + ") VALUES ("
+            # print(executestring)
+            self.curs.execute(executestring)
+            if schema['data'] is not None:
+                for item in schema['data']:
+                    funnystring = insertstring
+                    for value in item.values():
+                        funnystring += f"{value}, "
+                    self.curs.execute(funnystring[:-2]+");")
+            print("Tables created and populated (when applicable)")
 
 connectList = Connect.connection()
 obj = Queries(connectList[0], connectList[1])

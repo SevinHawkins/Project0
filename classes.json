@@ -1,24 +1,36 @@
 {
-    "tablename": "Classes",
-    "columns": [
-        "name VARCHAR(255)",
-        "specialty VARCHAR(255)",
-        "health INT"
-    ],
-    "data": [{
-            "name": "Rock",
-            "specialty": "heavy",
-            "health": 10
-        },
-        {
-            "name": "Paper",
-            "specialty": "agility",
-            "health": 2
-        },
-        {
-            "name": "Scissors",
-            "specialty": "melee",
-            "health": 5
-        }
-    ]
+    "schemas": [{
+        "tablename": "Classes",
+        "columns": [
+            ["name", "VARCHAR(255)"],
+            ["specialty", "VARCHAR(255)"],
+            ["health", "INT"]
+        ],
+        "primarykey": null,
+        "data": [{
+                "name": "Rock",
+                "specialty": "heavy",
+                "health": 10
+            },
+            {
+                "name": "Paper",
+                "specialty": "agility",
+                "health": 2
+            },
+            {
+                "name": "Scissors",
+                "specialty": "melee",
+                "health": 5
+            }
+        ]
+    }, {
+        "tablename": "PlayerData",
+        "columns": [
+            ["id", "INT NOT NULL AUTO_INCREMENT"],
+            ["class", "VARCHAR(255)"],
+            ["health", "INT"]
+        ],
+        "primarykey": "id",
+        "data": null
+    }]
 }
