@@ -4,23 +4,27 @@
         "columns": [
             ["name", "VARCHAR(255)"],
             ["specialty", "VARCHAR(255)"],
-            ["health", "INT"]
+            ["health", "INT"],
+            ["baseattack", "INT"]
         ],
         "primarykey": null,
         "data": [{
                 "name": "Rock",
                 "specialty": "heavy",
-                "health": 10
+                "health": 40,
+                "baseattack": 2
             },
             {
                 "name": "Paper",
                 "specialty": "agility",
-                "health": 2
+                "health": 10,
+                "baseattack": 5
             },
             {
                 "name": "Scissors",
                 "specialty": "melee",
-                "health": 5
+                "health": 25,
+                "baseattack": 8
             }
         ]
     }, {
@@ -32,5 +36,45 @@
         ],
         "primarykey": "id",
         "data": null
+    }, {
+        "tablename": "EnemyData",
+        "columns": [
+            ["id", "INT NOT NULL AUTO_INCREMENT"],
+            ["name", "VARCHAR(255)"],
+            ["health", "INT"],
+            ["attack", "INT"]
+        ],
+        "primarykey": "id",
+        "data": [{
+                "name": "The Stapler",
+                "health": 5,
+                "attack": 1
+            },
+            {
+                "name": "The Holepunch",
+                "health": 6,
+                "attack": 2
+            },
+            {
+                "name": "The Pencil Sharpener",
+                "health": 8,
+                "attack": 5
+            },
+            {
+                "name": "The Thumbtack",
+                "health": 12,
+                "attack": 7
+            },
+            {
+                "name": "The Sticky Notes",
+                "health": 10,
+                "attack": 6
+            },
+            {
+                "name:": "The Paperclips",
+                "health": 15,
+                "attack": 4
+            }
+        ]
     }]
 }
