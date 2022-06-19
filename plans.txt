@@ -1,0 +1,12 @@
+Roguelike text based game
+Enemies are chosen at random
+PlayerData table is to keep track of runs
+enemies table is queried for legnth, randint selected between 1 and said legnth, enemy chosen from that row.
+during battle: you can either attack or heal by a random value
+need to expand on cli arguments, maybe commands to add custom enemies and classes?
+    make sure custom enemy/class commands can be added mid-game (probably by executing the file in a separate terminal)
+
+
+Possible Future Ideas:
+Inventory System
+
