@@ -1,6 +1,6 @@
 {
     "schemas": [{
-        "tablename": "Classes",
+        "tablename": "classes",
         "columns": [
             ["name", "VARCHAR(255)"],
             ["specialty", "VARCHAR(255)"],
@@ -28,16 +28,17 @@
             }
         ]
     }, {
-        "tablename": "PlayerData",
+        "tablename": "playerdata",
         "columns": [
             ["id", "INT NOT NULL AUTO_INCREMENT"],
             ["class", "VARCHAR(255)"],
-            ["health", "INT"]
+            ["health", "INT"],
+            ["attack", "INT"]
         ],
         "primarykey": "id",
         "data": null
     }, {
-        "tablename": "EnemyData",
+        "tablename": "enemydata",
         "columns": [
             ["id", "INT NOT NULL AUTO_INCREMENT"],
             ["name", "VARCHAR(255)"],
