@@ -93,6 +93,10 @@ class Queries:
         enemy = f"'{name}', {health}, {attack}"
         self.curs.execute(f"INSERT INTO enemydata (name, health, attack) VALUES ({enemy});")
         self.conn.commit()
+
+    def delete_enemy(self, name):
+        self.curs.execute(f"DELETE FROM enemydata WHERE name='{name}';")
+        self.conn.commit()
     
     def get_all_rows(self, tablename):
         self.curs.execute(f"SELECT * FROM {tablename};")
@@ -138,8 +142,6 @@ class Game:
         self.queries = Queries(connection, cursor)
 
     # ask the player for what class they want to play
-    
-    # Will most likely need to be cleaned
     def player_setup(self):
         print("Please pick a character to get started")
         classes = self.queries.get_all_rows("classes")
@@ -227,6 +229,7 @@ parser = argparse.ArgumentParser(description='Placeholder')
 parser.add_argument("--setup", default=False, action="store_true", help="Create the needed tables for the database.")
 #parser.add_argument("--insert", default=False, action="store_true", help="Insert generic data into the database. (Mainly for debugging)")
 parser.add_argument("--enemy", default=False, action="store_true", help="Insert an enemy into the database.")
+parser.add_argument("--enemy-delete", default=False, action="store_true", help="Delete an enemy from the database.")
 parser.add_argument("--enemy-name", default=False, help="Name of the enemy to insert.")
 parser.add_argument("--enemy-health", default=False, help="Health of the enemy to insert.")
 parser.add_argument("--enemy-attack", default=False, help="Attack of the enemy to insert.")
@@ -252,3 +255,10 @@ if args.enemy:
     else:
         print("Please provide a name, health, and attack value.")
         exit(1)
+
+    if args.enemy_delete:
+        if args.enemy_name:
+            queriesobj.delete_enemy(args.enemy_name)
+        else:
+            print("Please provide a name.")
+            exit(1)
